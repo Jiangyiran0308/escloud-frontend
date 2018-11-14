@@ -3,9 +3,14 @@
 </style>
 <template>
   <div>
+    <div>
     test!!!!!!!!!!
     后端传来的数据为：
     {{testData}}
+    </div>
+    <div>
+      {{testData2}}
+    </div>
   </div>
 </template>
 
@@ -17,6 +22,7 @@
     data() {
       return {
         testData:'',
+        testData2:'null',
 
       }
     },
@@ -25,21 +31,37 @@
       // this.$http.get(this.hytGlobal.parent_url+'/data').then(function (xhr) {
       //   console.log(xhr);
       // })
-      var user = new URLSearchParams();
-      user.append("user","jiangyiran");
+      // var user = new URLSearchParams();
+      // user.append("user","jiangyiran");
 
       let uu = {
         username:"jiangyiran",
         password:"123456"
       };
 
-      this.$axios.post('/data',uu)
-        .then(function (response) {
-          console.log(response.data);
+      let user = "123456";
+
+      this.$http.get('/data',{
+        params:{
+          user:user
+        }
+      })
+        .then(function (xhr) {
+          // console.log(response.data);
+          vm.testData = xhr.data ;
         })
         .catch(function (error) {
-          console.log(error);
+          // console.log(error);
         });
+
+      this.$http.post('/test',uu)
+        .then((xhr)=>{
+          console.log(xhr);
+          vm.testData2 = xhr.data ;
+        })
+        .catch((error)=>{
+
+        })
     },
     methods: {},
   }

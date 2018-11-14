@@ -5,7 +5,6 @@
 </template>
 
 <script>
-  import Index from './views/BlogApp/menu/index'
 export default {
   name: 'App'
 }

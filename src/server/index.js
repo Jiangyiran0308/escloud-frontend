@@ -3,6 +3,7 @@ import qs from "qs";
 import { Message } from "element-ui";
 
 const base = 'http://localhost:8080';
+// const base = '/';
 
 const Axios = axios.create({
   baseURL: base,
@@ -10,7 +11,8 @@ const Axios = axios.create({
   // responseType: "json",
   // withCredentials: true, //允许带cookie
   headers:{
-    "Content-Type": "application/x-www-form-urlencoded;charset=utf-8"
+    // "Content-Type": "application/x-www-form-urlencoded;charset=utf-8"
+    "Content-Type": "application/json;charset=UTF-8"
   }
 });
 
@@ -63,6 +65,6 @@ Axios.interceptors.response.use(
 // 对axios的实例重新封装成一个plugin ,方便 Vue.use(xxxx)
 export default {
   install: function(Vue, Option) {
-    Object.defineProperty(Vue.prototype, "$axios", { value: Axios });
+    Object.defineProperty(Vue.prototype, "$http", { value: Axios });
   }
 };
