@@ -9,7 +9,7 @@
     min-width: 1260px;
     height: 50px;
     color: #FFFFFF;
-    background: #444444;
+    background: rgba(3, 79, 113, 0.77);
   }
   .leftFrame{
     float: left;
@@ -39,8 +39,7 @@
   }
   .viewsFrame{
     float: left;
-    margin-left: 10px;
-    width: 1000px;
+    width: 100%;
     height: 100%;
     background-color: #FFFFFF;
   }
@@ -55,34 +54,15 @@
     <div :class="topFrame">
       <div style="float: left;width: 170px;text-align:center">
         <!--<span class="ji-iconfont-home_fill_light" style="font-size: 35px;color: #FFFFFF" ></span>-->
-        <img :src="logoUrl"/>
-      </div>
-      <!--二级，三级++菜单-->
-      <div class="secondMenuFrame" :style="{marginLeft:(screenWidth-1000)/2-130+'px'}">
-        <el-menu
-          :default-active="activeIndex"
-          background-color="#444444"
-          class="el-menu"
-          mode="horizontal" @select="clickMenu2">
-          <second-menu :menuData="secondMenuData"/>
-        </el-menu>
+        <!--<img :src="logoUrl"/>-->
+        <span>储能云平台</span>
       </div>
       <div style="float: right">
         <user-info/>
       </div>
     </div>
     <div style="position: absolute;width: 100%;top: 50px;left: 0;right: 0;bottom: 0;background-color: #e5e7ea">
-      <div style="height: 100%;width: 1260px;margin: 0 auto">
-        <!--左侧一级菜单-->
-        <div :class="leftFrame">
-          <el-scrollbar style="height: 100%">
-            <div v-for="(item,index) in menuData" :class="selectMenuDivColor(item.entity.id)" @click="clickMenu(item.entity,index)" :style='{height:"oneMenuHeight"}'>
-              <span :class="item.entity.iconClass" style="font-size: 20px"></span>&nbsp&nbsp
-              <span style="font-size: 15px">{{item.entity.name}}</span>
-            </div>
-            <!--<div style="height: 30px;cursor:pointer;margin-bottom: 2px">click</div>-->
-          </el-scrollbar>
-        </div>
+      <div style="height: 100%;">
         <!--窗口-->
         <div class="viewsFrame">
           <el-scrollbar style="height: 100%">

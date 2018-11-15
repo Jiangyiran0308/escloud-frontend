@@ -7,15 +7,20 @@ const testview = resolve => {require(['../../components/Test'],resolve)};
 const list = [
   {
     path:'/',
-    name:'appframe',
+    name:'app',
     component:  index,
     children:[
-      {path: '', redirect: '/home/'},
+      {path: '', redirect: '/home'},
       {path:'home',name:'home', component:testview,},
       {path:'login',name:'login', component:login_home,},
 
     ]
   },
+  {
+    path:'/login',
+    name:'login',
+    component:login_home
+  }
 ];
 
 

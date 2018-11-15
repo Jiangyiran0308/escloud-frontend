@@ -39,25 +39,29 @@ Axios.interceptors.request.use(
 Axios.interceptors.response.use(
   res =>{
     //对响应数据做些事
-    // if (res.data && !res.data.success) {
-    //   Message({
-    //     //  饿了么的消息弹窗组件,类似toast
-    //     showClose: true,
-    //     message: res.data.error.message.message
-    //       ? res.data.error.message.message
-    //       : res.data.error.message,
-    //     type: "error"
-    //   });
-    //   return Promise.reject(res.data.error.message);
-    // }
+    if(res.data){
+      let data = res.data ;
+      if(data.showFlag === true){
+        Message({
+          showClose:true,
+          type:data.level,
+          message:data.message
+        });
+      }
+    }
+    else{
+      Message({
+        showClose:true,
+        type:error,
+        message:"请求失败！"
+      });
+    }
+
     return res;
   },
   error => {
-
-
     // 返回 response 里的错误信息
-    console.log(error)
-    let errorInfo =  error.data.error ? error.data.error.message : error.data;
+    console.log(error);
     return Promise.reject(errorInfo);
   }
 );

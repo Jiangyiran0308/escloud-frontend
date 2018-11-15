@@ -124,17 +124,27 @@
           },
           loginin(){
             let vm = this ;
-            // vm.loginLoading = true ;
             const loading = this.$loading({
               lock: true,
               text: '正在登录……',
               spinner: 'el-icon-loading',
-              background: 'rgba(0, 0, 0, 0.7)',
+              background: 'rgba(0, 0, 0, 0.5)',
               target: document.querySelector('#loginWin')
             });
-            setTimeout(() => {
+
+            this.$http.post('/testLogin',{accountid:vm.inputAccount,password:vm.inputPassword}).then((xhr)=>{
+              let userinfo = xhr.data ;
+              if(userinfo.id){
+                window.sessionStorage.setItem("escloud_id",userinfo.id);
+              }else{
+                console.log("登录失败，账号或密码错误");
+              }
               loading.close();
-            }, 3000);
+            }).catch((error)=>{console.log(error)});
+
+            // setTimeout(() => {
+            //   loading.close();
+            // }, 3000);
           },
           signin(){
 
