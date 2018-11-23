@@ -39,6 +39,11 @@
       // })
       // var user = new URLSearchParams();
       // user.append("user","jiangyiran");
+      this.$http.post('/login_action',{username:"amdin",password:"123456"}).then((xhr)=>{
+        console.log(xhr);
+        window.localStorage.setItem("user_id","11111111");
+        // next();
+      });
 
       let uu = {
         username:"jiangyiran",
