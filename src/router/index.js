@@ -7,7 +7,8 @@ import server from  '../server/index'
 Vue.use(Router)
 
 const router = new Router({
-  mode:'hash',
+  // mode:'hash',
+  mode:'history',
   routes: escloud_router_list,
 });
 

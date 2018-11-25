@@ -8,8 +8,8 @@ const base = 'http://localhost:8080';
 const Axios = axios.create({
   baseURL: base,
   timeout: 15000,
-  // responseType: "json",
-  // withCredentials: true, //允许带cookie
+  responseType: "json",
+  withCredentials: true, //允许带cookie
   headers:{
     // "Content-Type": "application/x-www-form-urlencoded;charset=utf-8"
     "Content-Type": "application/json;charset=UTF-8"

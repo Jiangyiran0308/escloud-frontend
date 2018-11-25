@@ -55,7 +55,7 @@
       <div style="float: left;width: 170px;text-align:center">
         <!--<span class="ji-iconfont-home_fill_light" style="font-size: 35px;color: #FFFFFF" ></span>-->
         <!--<img :src="logoUrl"/>-->
-        <span>储能云平台</span>
+        <span>云平台</span>
       </div>
       <div style="float: right">
         <user-info/>

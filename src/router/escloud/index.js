@@ -12,8 +12,7 @@ const list = [
     children:[
       {path: '', redirect: '/home'},
       {path:'home',name:'home', component:testview,},
-      {path:'login',name:'login', component:login_home,},
-
+      {path:'system/menuManage',name:'menuManage', component:testview,},
     ]
   },
   {

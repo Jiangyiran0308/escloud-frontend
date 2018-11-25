@@ -48,18 +48,27 @@
         center
         :close-on-click-modal="false"
         :close-on-press-escape="false">
-        <span style="font-size: 16px;color: #9B9B9B">账&nbsp;&nbsp;&nbsp;号：</span>
-        <el-input v-model="inputAccount" placeholder="请输入用户名或邮箱" style="margin-top: 10px;margin-bottom: 10px"></el-input><br>
-        <span style="font-size: 16px;color: #9B9B9B">密&nbsp;&nbsp;&nbsp;码：</span>
-        <el-input v-model="inputPassword" placeholder="请输入密码" style="margin-top: 10px;margin-bottom: 10px"></el-input>
-        <span style="color: #1b88ed;font-size: 10px;cursor:pointer" @click="signin">
-          没有账号？去注册
-          <span class="ji-iconfont-right" style="font-size: 10px"></span>
-        </span>
-        <span slot="footer" class="dialog-footer">
-          <el-button @click="loginWindowflag = false">取 消</el-button>
-          <el-button type="primary" @click="loginin">确 定</el-button>
-        </span>
+        <form  method="post" action="http://localhost:8080/login_action">
+          <label>
+            <input type="text" name="username"/>
+          </label>
+          <label>
+            <input type="password" name="password"/>
+          </label>
+          <input type="submit" name="dengli"/>
+        </form>
+        <!--<span style="font-size: 16px;color: #9B9B9B">账&nbsp;&nbsp;&nbsp;号：</span>-->
+        <!--<el-input v-model="inputAccount" placeholder="请输入用户名" style="margin-top: 10px;margin-bottom: 10px"></el-input><br>-->
+        <!--<span style="font-size: 16px;color: #9B9B9B">密&nbsp;&nbsp;&nbsp;码：</span>-->
+        <!--<el-input v-model="inputPassword" placeholder="请输入密码" style="margin-top: 10px;margin-bottom: 10px"></el-input>-->
+        <!--<span style="color: #1b88ed;font-size: 10px;cursor:pointer" @click="signin">-->
+          <!--没有账号？去注册-->
+          <!--<span class="ji-iconfont-right" style="font-size: 10px"></span>-->
+        <!--</span>-->
+        <!--<span slot="footer" class="dialog-footer">-->
+          <!--<el-button @click="loginWindowflag = false">取 消</el-button>-->
+          <!--<el-button type="primary" @click="loginin">确 定</el-button>-->
+        <!--</span>-->
       </el-dialog>
 
     </div>
@@ -132,19 +141,14 @@
               target: document.querySelector('#loginWin')
             });
 
-            this.$http.post('/testLogin',{accountid:vm.inputAccount,password:vm.inputPassword}).then((xhr)=>{
+            this.$http.post('/login_action',{username:vm.inputAccount,password:vm.inputPassword}).then((xhr)=>{
               let userinfo = xhr.data ;
-              if(userinfo.id){
-                window.sessionStorage.setItem("escloud_id",userinfo.id);
-              }else{
-                console.log("登录失败，账号或密码错误");
-              }
               loading.close();
             }).catch((error)=>{console.log(error)});
 
-            // setTimeout(() => {
-            //   loading.close();
-            // }, 3000);
+            setTimeout(() => {
+              loading.close();
+            }, 3000);
           },
           signin(){
 
