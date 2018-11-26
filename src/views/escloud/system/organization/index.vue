@@ -9,16 +9,14 @@
 
 <script>
     export default {
-        name: "menu-manage",
+        name: "index",
         props: {},
         components: {},
         data() {
             return {}
         },
         mounted() {
-
         },
-        methods: {}
-
+        methods: {},
     }
 </script>

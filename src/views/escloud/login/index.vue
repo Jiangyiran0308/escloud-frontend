@@ -11,10 +11,10 @@
   .loginFrame{
     position: absolute;
     top: 30%;
-    left: 50%;
+    right: 10%;
     margin-top: -5em;
     margin-left: -9em;
-    width: 20%;
+    width: 300px;
     padding: 50px 30px;
     background-color: rgba(255,255,255,0.1);
     text-align: center;

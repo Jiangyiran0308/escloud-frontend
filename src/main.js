@@ -11,8 +11,8 @@ import 'element-ui/lib/theme-chalk/index.css';
 import 'jquery'
 
 import './assets/icon/iconfont.css';
-import '../static/css/el_style.css'
-import '../static/css/frame.css'
+// import '../static/css/el_style.css'
+// import '../static/css/frame.css'
 
 Vue.use(axiosPlugin);
 

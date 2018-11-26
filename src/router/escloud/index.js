@@ -1,4 +1,6 @@
 
+import system_list from './system'
+
 const index = resolve => {require(['../../views/escloud/menu/index'],resolve)};
 
 const login_home = resolve => {require(['../../views/escloud/login/index'],resolve)};
@@ -12,7 +14,7 @@ const list = [
     children:[
       {path: '', redirect: '/home'},
       {path:'home',name:'home', component:testview,},
-      {path:'system/menuManage',name:'menuManage', component:testview,},
+      ...system_list,
     ]
   },
   {

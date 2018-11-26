@@ -52,7 +52,7 @@ Axios.interceptors.response.use(
     else{
       Message({
         showClose:true,
-        type:error,
+        type:'error',
         message:"请求失败！"
       });
     }
@@ -61,8 +61,17 @@ Axios.interceptors.response.use(
   },
   error => {
     // 返回 response 里的错误信息
-    console.log(error);
-    return Promise.reject(errorInfo);
+    let status = error.response.status ;
+    if(status === 403){
+      Message({showClose:true, type:'warning', message:"权限不足，请联系管理员"});
+    }else if(status === 500){
+      Message({showClose:true, type:"error", message:"系统异常，错误500"});
+    }else if(status === 504 || status === 404 ){
+      Message({showClose:true, type:'error', message:"系统异常"});
+    }else{
+      Message({showClose:true, type:'error', message:"未知错误"});
+    }
+    return Promise.resolve(error);
   }
 );
 
