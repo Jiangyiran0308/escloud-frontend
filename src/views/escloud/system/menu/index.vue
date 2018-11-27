@@ -30,7 +30,7 @@
             <el-button type="text" size="small">编辑</el-button>
           </label>
           <label>
-            <el-button type="text" size="small">详情</el-button>
+            <el-button type="text" size="small" @click="detail(scope.row)">详情</el-button>
           </label>
           <label v-if="scope.row.status === 1">
             <el-button type="text" size="small">禁用</el-button>
@@ -67,7 +67,10 @@
         },
         methods: {
           createAccount(){
-            this.$router.push('/system/createAccount');
+            this.$router.push({path:'/system/createMenu'});
+          },
+          detail(data){
+            this.$router.push({path:'/system/menuInfo',query:{data:data}});
           }
         },
     }
